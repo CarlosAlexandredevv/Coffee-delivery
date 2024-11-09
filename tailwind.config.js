@@ -28,12 +28,21 @@ export default {
 
       fontFamily:{
         "roboto": ["Roboto", "sans-serif"],
-        "baloo": "Baloo 2"
+        "baloo": ["Baloo 2", "serif"]
       },
 
+      lineHeight:{
+        "line":"1.3"
+      }
+,
       backgroundImage:{
         'home': "url('/src/assets/background.png')",
+      },
+
+      maxWidth:{
+        "container": "72.5rem"
       }
+      
     },
   },
   plugins: [],
