@@ -1,3 +1,9 @@
+import { Intro } from './components/Intro';
+
 export function Home() {
-  return <div className="h-[200vh]">Home</div>;
+  return (
+    <div>
+      <Intro />
+    </div>
+  );
 }

@@ -3,7 +3,7 @@ import { Header } from '../components/Header';
 
 export function DefaultLayout() {
   return (
-    <div>
+    <div className="bg-background">
       <Header />
       <Outlet />
     </div>

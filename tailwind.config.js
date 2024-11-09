@@ -29,6 +29,10 @@ export default {
       fontFamily:{
         "roboto": ["Roboto", "sans-serif"],
         "baloo": "Baloo 2"
+      },
+
+      backgroundImage:{
+        'home': "url('/src/assets/background.png')",
       }
     },
   },
