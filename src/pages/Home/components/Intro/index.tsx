@@ -3,7 +3,7 @@ import hero from '../../../../assets/hero.png';
 import { IconsIntro } from '../Icons-Intro';
 export function Intro() {
   return (
-    <section className="flex lg:items-center bg-center bg-cover min-h-[544px] bg-background bg-home px-3">
+    <section className="flex lg:items-center bg-center bg-cover min-h-[544px] bg-background bg-home px-3 overflow-x-hidden">
       <div className="max-w-container mx-auto grid lg:grid-cols-[1.5fr_1fr] md:grid-cols-2">
         <div>
           <h1 className="font-baloo font-extrabold text-3xl lg:text-5xl max-w-xl leading-line mb-4">
