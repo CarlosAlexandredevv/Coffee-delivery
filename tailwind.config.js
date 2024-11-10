@@ -73,7 +73,7 @@ export default {
   			'line': '1.3'
   		},
   		backgroundImage: {
-  			home: "'url('/src/assets/background.png')'"
+  			home: "url('/src/assets/background.png')"
   		},
   		maxWidth: {
   			'container': '72.5rem'
