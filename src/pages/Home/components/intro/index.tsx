@@ -1,6 +1,6 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react';
-import hero from '../.././../assets/hero.png';
-import { Icons } from './icons';
+import hero from '../../../../assets/hero.png';
+import { Icons } from '../icons';
 export function Intro() {
   return (
     <section className="flex lg:items-center bg-center bg-cover min-h-[444px] lg:min-h-[544px] bg-background bg-home px-3 overflow-x-hidden dark:bg-zinc-900 ">
