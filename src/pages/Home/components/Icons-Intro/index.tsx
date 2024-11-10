@@ -14,7 +14,7 @@ export function IconsIntro({ content, icon, bg }: IconsIntroProps) {
       >
         {icon}
       </div>
-      <p className="text-base-text font-roboto leading-line whitespace-nowrap">
+      <p className="text-base-text font-roboto leading-line whitespace-nowrap dark:text-zinc-200">
         {content}
       </p>
     </div>
