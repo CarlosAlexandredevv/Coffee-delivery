@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 export function Header() {
   return (
-    <header className="py-8 sticky top-0 z-10">
+    <header className="py-8 sticky top-0 z-10 bg-background">
       <div className="flex items-center justify-between max-w-container xl:mx-auto mx-3">
         <NavLink to="/">
           <img src="logo.svg" />

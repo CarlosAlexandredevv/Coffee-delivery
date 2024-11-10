@@ -3,10 +3,10 @@ import hero from '../../../../assets/hero.png';
 import { IconsIntro } from '../Icons-Intro';
 export function Intro() {
   return (
-    <section className="flex items-center bg-center bg-cover h-[544px] bg-background bg-home">
-      <div className="max-w-container mx-auto grid grid-cols-[1.5fr_1fr]">
+    <section className="flex lg:items-center bg-center bg-cover min-h-[544px] bg-background bg-home px-3">
+      <div className="max-w-container mx-auto grid lg:grid-cols-[1.5fr_1fr] md:grid-cols-2">
         <div>
-          <h1 className="font-baloo font-extrabold text-5xl max-w-xl leading-line mb-4">
+          <h1 className="font-baloo font-extrabold text-3xl lg:text-5xl max-w-xl leading-line mb-4">
             Encontre o café perfeito para qualquer hora do dia
           </h1>
           <p className="text-xl leading-line text-base-subtitle font-roboto max-w-xl">
@@ -14,7 +14,7 @@ export function Intro() {
             hora
           </p>
 
-          <div className="grid grid-cols-[0.2fr_0.5fr] gap-5 mt-16">
+          <div className="grid lg:grid-cols-[0.2fr_0.5fr] gap-5 mt-6 lg:mt-16">
             <IconsIntro
               bg="bg-yellow-dark"
               icon={<ShoppingCart weight="fill" />}
@@ -37,7 +37,7 @@ export function Intro() {
             />
           </div>
         </div>
-        <img src={hero} />
+        <img className="mt-6 md:mt-0" src={hero} alt="hero coffee" />
       </div>
     </section>
   );
