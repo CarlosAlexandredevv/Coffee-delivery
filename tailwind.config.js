@@ -28,7 +28,7 @@ export default {
 
       fontFamily:{
         "roboto": ["Roboto", "sans-serif"],
-        "baloo": ["Baloo 2", "serif"]
+        "baloo": ["Baloo\\ 2", "serif"]
       },
 
       lineHeight:{
