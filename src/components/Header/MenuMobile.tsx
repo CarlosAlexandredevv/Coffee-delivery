@@ -38,10 +38,10 @@ export function MenuMobile() {
       <SheetTrigger>
         <List
           size={36}
-          className="rounded-md border-zinc-300 border p-2  duration-300 cursor-pointer sm:hidden dark:border-zinc-50"
+          className="rounded-md border-zinc-300 border p-2 duration-300 cursor-pointer sm:hidden dark:border-zinc-50"
         />
       </SheetTrigger>
-      <SheetContent className="bg-zinc-900 border-none">
+      <SheetContent className="dark:bg-zinc-900 border-none">
         <SheetHeader>
           <SheetDescription className="flex flex-col h-screen gap-3 mt-6">
             <div className="flex gap-1 items-center bg-purple-light rounded-md p-2 ">
@@ -66,7 +66,7 @@ export function MenuMobile() {
             ) : (
               <Moon
                 size={36}
-                className="rounded-md bg-zinc-50 text-zinc-900 p-2 duration-300 cursor-pointer mx-auto"
+                className="rounded-md bg-zinc-900 text-zinc-50 p-2 duration-300 cursor-pointer mx-auto"
                 onClick={darkModeHandler}
               />
             )}

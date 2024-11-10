@@ -33,7 +33,7 @@ export function Header() {
     <header className="py-8 sticky top-0 z-10 bg-background dark:bg-zinc-900">
       <div className="flex items-center justify-between max-w-container xl:mx-auto mx-3">
         <NavLink to="/">
-          <img src={isDarkMode ? 'logodark.svg' : 'logo.svg'} alt="Logo" />
+          <img src={isDarkMode ? '/logodark.svg' : '/logo.svg'} alt="Logo" />
         </NavLink>
 
         <div className="flex gap-3 items-center">
