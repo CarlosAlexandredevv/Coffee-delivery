@@ -1,12 +1,12 @@
 import React from 'react';
 
-type IconsIntroProps = {
+type IconsProps = {
   content: string;
   bg: string;
   icon: React.ReactNode;
 };
 
-export function IconsIntro({ content, icon, bg }: IconsIntroProps) {
+export function Icons({ content, icon, bg }: IconsProps) {
   return (
     <div className="flex items-center gap-3 mr-4">
       <div

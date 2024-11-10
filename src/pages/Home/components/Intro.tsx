@@ -1,6 +1,6 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react';
-import hero from '../../../../assets/hero.png';
-import { IconsIntro } from '../icons-Intro';
+import hero from '../.././../assets/hero.png';
+import { Icons } from './icons';
 export function Intro() {
   return (
     <section className="flex lg:items-center bg-center bg-cover min-h-[444px] lg:min-h-[544px] bg-background bg-home px-3 overflow-x-hidden dark:bg-zinc-900 ">
@@ -15,22 +15,22 @@ export function Intro() {
           </p>
 
           <div className="grid lg:grid-cols-[0.2fr_0.5fr] gap-5 mt-6 lg:mt-16">
-            <IconsIntro
+            <Icons
               bg="bg-yellow-dark"
               icon={<ShoppingCart weight="fill" />}
               content="Compra simples e segura"
             />
-            <IconsIntro
+            <Icons
               bg="bg-base-text"
               icon={<Package weight="fill" />}
               content="Embalagem mantém o café intacto"
             />
-            <IconsIntro
+            <Icons
               bg="bg-yellow"
               icon={<Timer weight="fill" />}
               content="Entrega rápida e rastreada"
             />
-            <IconsIntro
+            <Icons
               bg="bg-purple"
               icon={<Coffee weight="fill" />}
               content="O café chega fresquinho até você"
