@@ -11,7 +11,7 @@ export default {
   			'yellow-dark': '#C47F17',
   			'yellow': '#DBAC2C',
   			'yellow-light': '#F1E9C9',
-  			'purle-dark': '#4B2995',
+  			'purple-dark': '#4B2995',
   			'purple': '#8047f8',
   			'purple-light': '#EBE5F9',
   			'base-title': '#272221',

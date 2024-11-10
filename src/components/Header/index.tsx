@@ -33,27 +33,27 @@ export function Header() {
     <header className="py-8 sticky top-0 z-10 bg-background dark:bg-zinc-900">
       <div className="flex items-center justify-between max-w-container xl:mx-auto mx-3">
         <NavLink to="/">
-          <img src={isDarkMode ? '/logodark.svg' : '/logo.svg'} alt="Logo" />
+          <img src={isDarkMode ? '/logodark.svg' : '/logo.svg'} />
         </NavLink>
 
         <div className="flex gap-3 items-center">
           {isDarkMode ? (
             <Sun
               size={36}
-              className="rounded-md  bg-zinc-50  border p-2 hover:bg-zinc-800 hover:text-white text-zinc-600 duration-300 cursor-pointer hidden sm:block"
+              className="rounded-md  border border-purple p-2 hover:bg-zinc-800 hover:text-white text-zinc-50 duration-300 cursor-pointer"
               onClick={darkModeHandler}
             />
           ) : (
             <Moon
               size={36}
-              className="rounded-md border-zinc-300 border p-2 hover:bg-zinc-800 hover:text-zinc-50 duration-300 cursor-pointer hidden sm:block"
+              className="rounded-md border-zinc-300 border p-2 hover:bg-zinc-800 hover:text-zinc-50 duration-300 cursor-pointer"
               onClick={darkModeHandler}
             />
           )}
 
           <div className=" gap-1 items-center bg-purple-light rounded-md p-2 hidden sm:flex">
             <MapPin className="size-[22px] text-purple" weight="fill" />
-            <span className="text-purle-dark font-roboto text-sm leading-line">
+            <span className="text-purple-dark font-roboto text-sm leading-line">
               Fortaleza, CE
             </span>
           </div>
