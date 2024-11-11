@@ -10,19 +10,6 @@ export function CoffeeList() {
         <div className="flex justify-center xl:block">
           <div className="grid grid-cols-1 sm:gap-x-6 xl:gap-x-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
             <CardHome />
-            <CardHome />
-            <CardHome />
-            <CardHome />
-            <CardHome />
-            <CardHome />
-            <CardHome />
-            <CardHome />
-            <CardHome />
-            <CardHome />
-            <CardHome />
-            <CardHome />
-            <CardHome />
-            <CardHome />
           </div>
         </div>
       </div>
