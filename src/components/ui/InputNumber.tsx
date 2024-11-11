@@ -15,7 +15,7 @@ export function InputNumber() {
   }
 
   return (
-    <div className="flex items-center bg-base-button gap-1 p-2 rounded-md">
+    <div className="flex items-center bg-base-button gap-1 p-2 rounded-md select-none">
       <Minus
         className="text-purple hover:text-purple-dark duration-300 cursor-pointer"
         size={14}

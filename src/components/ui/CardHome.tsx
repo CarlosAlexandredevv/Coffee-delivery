@@ -11,7 +11,7 @@ export function CardHome() {
           className="flex flex-col h-[310px] max-w-[256px] items-center bg-base-card px-4 rounded-tl-md rounded-tr-[36px] rounded-bl-[36px] rounded-br-md relative mb-11 dark:bg-zinc-800"
         >
           <img
-            className="size-[120px] absolute -top-5"
+            className="size-[120px] absolute -top-5 select-none"
             src={coffee.img}
             alt={coffee.name}
           />
@@ -21,14 +21,14 @@ export function CardHome() {
               {coffee.tags.map((tag) => (
                 <span
                   key={`${coffee.id}-${tag}`}
-                  className="text-yellow-dark font-roboto font-bold text-[0.625rem] bg-yellow-light px-2 py-1 rounded-full leading-line"
+                  className="text-yellow-dark font-roboto font-bold text-[0.625rem] bg-yellow-light px-2 py-1 rounded-full leading-line uppercase select-none"
                 >
                   {tag}
                 </span>
               ))}
             </div>
           ) : (
-            <span className="text-yellow-dark font-roboto font-bold text-[0.625rem] bg-yellow-light px-2 py-1 rounded-full leading-line mt-28 mb-4">
+            <span className="text-yellow-dark font-roboto font-bold text-[0.625rem] bg-yellow-light px-2 py-1 rounded-full leading-line mt-28 mb-4 uppercase select-none">
               {coffee.tags[0]}
             </span>
           )}
