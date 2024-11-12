@@ -1,14 +1,19 @@
 import { CartAdd } from './CartAdd';
 import { InputNumber } from './InputNumber';
 import { coffeeData } from '../../pages/Home/components/coffee-list/utils/datacoffee';
+import { motion } from 'framer-motion';
 
 export function CardHome() {
   return (
     <>
       {coffeeData.map((coffee) => (
-        <div
+        <motion.div
           key={coffee.id}
           className="flex flex-col h-[310px] max-w-[256px] items-center bg-base-card px-4 rounded-tl-md rounded-tr-[36px] rounded-bl-[36px] rounded-br-md relative mb-11 dark:bg-zinc-800"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
         >
           <img
             className="size-[120px] absolute -top-5 select-none"
@@ -54,7 +59,7 @@ export function CardHome() {
               <CartAdd />
             </div>
           </div>
-        </div>
+        </motion.div>
       ))}
     </>
   );

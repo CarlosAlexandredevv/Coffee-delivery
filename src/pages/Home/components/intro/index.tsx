@@ -1,11 +1,17 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react';
 import hero from '../../../../assets/hero.png';
 import { Icons } from '../icons';
+import { motion } from 'framer-motion';
 export function Intro() {
   return (
     <section className="flex lg:items-center bg-center bg-cover min-h-[444px] lg:min-h-[544px] bg-background bg-home px-3 overflow-x-hidden dark:bg-zinc-900 dark:bg-home">
       <div className="max-w-container mx-auto grid lg:grid-cols-[1.5fr_1fr] md:grid-cols-2">
-        <div>
+        <motion.div
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          exit={{ x: -100, opacity: 0 }}
+        >
           <h1 className="font-baloo font-extrabold text-3xl lg:text-5xl max-w-xl leading-line mb-4 dark:text-zinc-100">
             Encontre o café perfeito para qualquer hora do dia
           </h1>
@@ -36,8 +42,15 @@ export function Intro() {
               content="O café chega fresquinho até você"
             />
           </div>
-        </div>
-        <img className="my-6 md:my-0" src={hero} alt="hero coffee" />
+        </motion.div>
+        <motion.div
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          exit={{ x: -100, opacity: 0 }}
+        >
+          <img className="my-6 md:my-0" src={hero} alt="hero coffee" />
+        </motion.div>
       </div>
     </section>
   );
