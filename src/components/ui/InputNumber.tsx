@@ -1,5 +1,5 @@
-import { Minus, Plus } from 'phosphor-react';
-import { useState } from 'react';
+import { Minus, Plus } from "phosphor-react";
+import { useState } from "react";
 
 export function InputNumber() {
   const [value, setValue] = useState(1);
@@ -15,18 +15,18 @@ export function InputNumber() {
   }
 
   return (
-    <div className="flex items-center bg-base-button gap-1 p-2 rounded-md select-none">
+    <div className="flex select-none items-center gap-1 rounded-md bg-base-button p-2">
       <Minus
-        className="text-purple hover:text-purple-dark duration-300 cursor-pointer"
+        className="cursor-pointer text-purple duration-300 hover:text-purple-dark"
         size={14}
         onClick={handleDecrement}
       />
       <input
-        className="bg-transparent text-center font-roboto leading-line text-base-title size-5 outline-none"
+        className="size-5 bg-transparent text-center font-roboto leading-line text-base-title outline-none"
         value={value}
       />
       <Plus
-        className="text-purple hover:text-purple-dark duration-300 cursor-pointer"
+        className="cursor-pointer text-purple duration-300 hover:text-purple-dark"
         size={14}
         onClick={handleIncrement}
       />
