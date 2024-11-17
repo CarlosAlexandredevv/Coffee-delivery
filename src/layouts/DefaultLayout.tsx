@@ -3,7 +3,7 @@ import { Header } from "../components/Header";
 
 export function DefaultLayout() {
   return (
-    <div className="h-screen bg-background dark:bg-zinc-900">
+    <div className="bg-background dark:bg-zinc-900">
       <Header />
       <Outlet />
     </div>
