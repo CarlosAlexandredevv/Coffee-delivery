@@ -23,6 +23,7 @@ export function InputNumber() {
       />
       <input
         className="size-5 bg-transparent text-center font-roboto leading-line text-base-title outline-none"
+        type="number"
         value={value}
       />
       <Plus
