@@ -5,9 +5,9 @@ export function CoffeesCart() {
   return (
     <div>
       <CardCart />
-      <div className="my-6 h-px w-full bg-base-button"></div>
+      <div className="my-6 h-px w-full bg-base-button dark:bg-zinc-700"></div>
       <CardCart />
-      <div className="my-6 h-px w-full bg-base-button"></div>
+      <div className="my-6 h-px w-full bg-base-button dark:bg-zinc-700"></div>
       <div className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
           <span className="font-roboto text-sm leading-line text-base-text dark:text-zinc-100">

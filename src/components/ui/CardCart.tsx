@@ -15,7 +15,7 @@ export function CardCart() {
             Expresso Tradicional
           </span>
           <span className="font-roboto font-bold leading-line text-base-text dark:text-zinc-300">
-            R$ 9,90
+            R$ 19,90
           </span>
         </div>
 

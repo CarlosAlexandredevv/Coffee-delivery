@@ -1,9 +1,15 @@
 import { InputForm } from "@/components/ui/InputForm";
 import { MapPinLine } from "phosphor-react";
-
+import { motion } from "framer-motion";
 export function FormCheckout() {
   return (
-    <div className="mt-6 rounded-md bg-base-card p-10 dark:bg-zinc-800">
+    <motion.div
+      initial={{ x: -100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      exit={{ x: -100, opacity: 0 }}
+      className="mt-6 rounded-md bg-base-card p-10 dark:bg-zinc-800"
+    >
       <div className="flex gap-2">
         <MapPinLine size={22} className="text-yellow-dark" />
         <div>
@@ -41,6 +47,6 @@ export function FormCheckout() {
           </div>
         </div>
       </form>
-    </div>
+    </motion.div>
   );
 }

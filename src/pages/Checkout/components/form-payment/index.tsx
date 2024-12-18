@@ -1,9 +1,17 @@
 import { SelectCard } from "@/components/ui/SelectCard";
 import { CurrencyDollar } from "phosphor-react";
 import { CreditCard, Bank, Money } from "phosphor-react";
+import { motion } from "framer-motion";
+
 export function FormPayment() {
   return (
-    <main className="mt-3 rounded-md bg-base-card p-10 dark:bg-zinc-800">
+    <motion.main
+      initial={{ x: -100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      exit={{ x: -100, opacity: 0 }}
+      className="mt-3 rounded-md bg-base-card p-10 dark:bg-zinc-800"
+    >
       <div className="flex gap-2">
         <CurrencyDollar size={22} className="text-purple" />
         <div>
@@ -32,6 +40,6 @@ export function FormPayment() {
           name="payment-method"
         />
       </fieldset>
-    </main>
+    </motion.main>
   );
 }
