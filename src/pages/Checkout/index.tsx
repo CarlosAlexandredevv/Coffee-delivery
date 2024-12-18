@@ -16,7 +16,7 @@ export function Checkout() {
         <h1 className="font-baloo text-lg font-bold leading-line text-base-subtitle dark:text-zinc-100">
           Cafés selecionados
         </h1>
-        <div className="mt-6 rounded-bl-[36px] rounded-br-md rounded-tl-md rounded-tr-[36px] bg-base-card p-10">
+        <div className="mt-6 rounded-bl-[36px] rounded-br-md rounded-tl-md rounded-tr-[36px] bg-base-card p-10 dark:bg-zinc-800">
           <CoffeesCart />
         </div>
       </div>

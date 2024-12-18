@@ -3,14 +3,14 @@ import { MapPinLine } from "phosphor-react";
 
 export function FormCheckout() {
   return (
-    <div className="mt-6 rounded-md bg-base-card p-10">
+    <div className="mt-6 rounded-md bg-base-card p-10 dark:bg-zinc-800">
       <div className="flex gap-2">
         <MapPinLine size={22} className="text-yellow-dark" />
         <div>
-          <h2 className="font-roboto leading-line text-base-subtitle">
+          <h2 className="font-roboto leading-line text-base-subtitle dark:text-zinc-100">
             Endereço de Entrega
           </h2>
-          <h3 className="mt-0.5 font-roboto text-sm leading-line text-base-text">
+          <h3 className="mt-0.5 font-roboto text-sm leading-line text-base-text dark:text-zinc-400">
             Informe o endereço onde deseja receber seu pedido
           </h3>
         </div>
