@@ -7,7 +7,7 @@ export function FormPayment() {
       <div className="flex gap-2">
         <CurrencyDollar size={22} className="text-purple" />
         <div>
-          <h2 className="to-base-subtitle font-roboto leading-line">
+          <h2 className="font-roboto leading-line text-base-subtitle">
             Pagamento
           </h2>
           <h3 className="mt-0.5 font-roboto text-sm leading-line text-base-text">
@@ -15,7 +15,7 @@ export function FormPayment() {
           </h3>
         </div>
       </div>
-      <fieldset className="mt-8 grid grid-cols-3 gap-3">
+      <fieldset className="mt-8 grid gap-3 lg:grid-cols-3">
         <SelectCard
           method="CARTÃO DE CRÉDITO"
           icon={<CreditCard className="text-purple" />}

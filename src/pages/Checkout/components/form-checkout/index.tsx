@@ -7,7 +7,7 @@ export function FormCheckout() {
       <div className="flex gap-2">
         <MapPinLine size={22} className="text-yellow-dark" />
         <div>
-          <h2 className="to-base-subtitle font-roboto leading-line">
+          <h2 className="font-roboto leading-line text-base-subtitle">
             Endereço de Entrega
           </h2>
           <h3 className="mt-0.5 font-roboto text-sm leading-line text-base-text">
@@ -17,26 +17,26 @@ export function FormCheckout() {
       </div>
 
       <form className="mt-8">
-        <div className="grid grid-cols-6 grid-rows-4 gap-4">
-          <div className="col-span-2">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:grid-rows-4">
+          <div className="md:col-span-2">
             <InputForm placeholder="CEP" />
           </div>
-          <div className="col-span-6 row-start-2">
+          <div className="md:col-span-6 md:row-start-2">
             <InputForm placeholder="Rua" />
           </div>
-          <div className="col-span-2 row-start-3">
+          <div className="md:col-span-2 md:row-start-3">
             <InputForm placeholder="Número" />
           </div>
-          <div className="col-span-4 col-start-3 row-start-3">
+          <div className="md:col-span-4 md:col-start-3 md:row-start-3">
             <InputForm placeholder="Complemento" opcional />
           </div>
-          <div className="col-span-2 row-start-4">
+          <div className="md:col-span-2 md:row-start-4">
             <InputForm placeholder="Bairro" />
           </div>
-          <div className="col-span-3 col-start-3 row-start-4">
+          <div className="md:col-span-3 md:col-start-3 md:row-start-4">
             <InputForm placeholder="Cidade" />
           </div>
-          <div className="col-start-6 row-start-4">
+          <div className="row-start-4 md:col-start-6">
             <InputForm placeholder="UF" />
           </div>
         </div>

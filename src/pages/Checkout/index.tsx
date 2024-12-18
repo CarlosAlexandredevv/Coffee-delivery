@@ -4,7 +4,7 @@ import { FormPayment } from "./components/form-payment";
 
 export function Checkout() {
   return (
-    <main className="mx-auto grid max-w-container grid-cols-[1.3fr_1fr] gap-8 py-6">
+    <main className="mx-auto grid max-w-container gap-8 px-3 py-6 md:grid-cols-[1.3fr_1fr] xl:px-0">
       <div>
         <h1 className="font-baloo text-lg font-bold leading-line text-base-subtitle dark:text-zinc-100">
           Complete seu pedido
