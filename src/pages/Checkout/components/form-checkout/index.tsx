@@ -16,27 +16,29 @@ export function FormCheckout() {
         </div>
       </div>
 
-      <form className="mt-8 grid grid-cols-6 grid-rows-4 gap-4">
-        <div className="col-span-2">
-          <InputForm placeholder="CEP" />
-        </div>
-        <div className="col-span-6 row-start-2">
-          <InputForm placeholder="Rua" />
-        </div>
-        <div className="col-span-2 row-start-3">
-          <InputForm placeholder="Número" />
-        </div>
-        <div className="col-span-4 col-start-3 row-start-3">
-          <InputForm placeholder="Complemento" opcional />
-        </div>
-        <div className="col-span-2 row-start-4">
-          <InputForm placeholder="Bairro" />
-        </div>
-        <div className="col-span-3 col-start-3 row-start-4">
-          <InputForm placeholder="Cidade" />
-        </div>
-        <div className="col-start-6 row-start-4">
-          <InputForm placeholder="UF" />
+      <form className="mt-8">
+        <div className="grid grid-cols-6 grid-rows-4 gap-4">
+          <div className="col-span-2">
+            <InputForm placeholder="CEP" />
+          </div>
+          <div className="col-span-6 row-start-2">
+            <InputForm placeholder="Rua" />
+          </div>
+          <div className="col-span-2 row-start-3">
+            <InputForm placeholder="Número" />
+          </div>
+          <div className="col-span-4 col-start-3 row-start-3">
+            <InputForm placeholder="Complemento" opcional />
+          </div>
+          <div className="col-span-2 row-start-4">
+            <InputForm placeholder="Bairro" />
+          </div>
+          <div className="col-span-3 col-start-3 row-start-4">
+            <InputForm placeholder="Cidade" />
+          </div>
+          <div className="col-start-6 row-start-4">
+            <InputForm placeholder="UF" />
+          </div>
         </div>
       </form>
     </div>
