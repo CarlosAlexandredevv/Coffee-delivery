@@ -1,3 +1,4 @@
+import { Coffee } from "phosphor-react";
 import { BinIcon } from "./BinIcon";
 import { InputNumber } from "./InputNumber";
 import { useState, useEffect } from "react";
@@ -30,6 +31,14 @@ export function CardCart() {
 
   return (
     <>
+      {cartItems.length === 0 && (
+        <div className="my-6 flex flex-col items-center justify-center">
+          <Coffee size={64} className="text-zinc-500" />
+          <p className="font-roboto font-semibold text-zinc-500">
+            Nenhum produto adicionado
+          </p>
+        </div>
+      )}
       {cartItems.map((coffee) => (
         <div key={coffee.id}>
           <div className="flex gap-5 bg-base-card dark:bg-zinc-800">
