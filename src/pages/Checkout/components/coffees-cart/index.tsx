@@ -1,6 +1,7 @@
 import { ButtonCart } from "@/components/ui/ButtonCart";
 import { CardCart } from "@/components/ui/CardCart";
-import { useState, useEffect } from "react";
+import { CartContext } from "@/contexts/CartContext";
+import { useState, useEffect, useContext } from "react";
 
 interface Coffee {
   id: number;
@@ -11,16 +12,15 @@ interface Coffee {
   tags: string[];
   quantity: number;
 }
-
 export function CoffeesCart() {
-  const [cartItems, setCartItems] = useState<Coffee[]>([]);
+  const { cart } = useContext(CartContext);
+
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
     const items: Coffee[] = JSON.parse(
       localStorage.getItem("cartItems") || "[]",
     );
-    setCartItems(items);
     const totalPrice = items.reduce(
       (acc, item) => acc + item.price * item.quantity,
       0,
@@ -59,7 +59,7 @@ export function CoffeesCart() {
             R$ {totalWithDelivery.toFixed(2)}
           </span>
         </div>
-        <ButtonCart />
+        <ButtonCart disabled={!cart} />
       </div>
     </div>
   );
