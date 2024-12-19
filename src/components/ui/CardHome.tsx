@@ -4,6 +4,7 @@ import { coffeeData } from "../../pages/Home/components/coffee-list/utils/dataco
 import { motion } from "framer-motion";
 import { useContext, useState } from "react";
 import { CartContext } from "@/contexts/CartContext";
+import { toast } from "sonner";
 
 interface Coffee {
   id: number;
@@ -38,6 +39,17 @@ export function CardHome() {
 
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     setCart(cartItems.reduce((acc, item) => acc + (item.quantity || 1), 0));
+
+    toast(
+      <div className="flex items-center font-roboto">
+        <img src={coffee.img} alt={coffee.name} className="mr-2 h-10 w-10" />
+        <div>
+          <p className="font-bold">Adicionado ao carrinho: {coffee.name}</p>
+          <p>Quantidade: {quantity}</p>
+        </div>
+      </div>,
+      { duration: 3000 },
+    );
   }
 
   function handleQuantityChange(id: number, value: number) {
