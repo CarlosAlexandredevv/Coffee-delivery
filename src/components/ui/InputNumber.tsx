@@ -1,16 +1,33 @@
 import { Minus, Plus } from "phosphor-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export function InputNumber() {
-  const [value, setValue] = useState(1);
+interface InputNumberProps {
+  onChange?: (value: number) => void;
+  value?: number;
+}
+
+export function InputNumber({ onChange, value = 1 }: InputNumberProps) {
+  const [inputValue, setInputValue] = useState(value);
+
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
 
   function handleIncrement() {
-    setValue(value + 1);
+    const newValue = inputValue + 1;
+    setInputValue(newValue);
+    if (onChange) {
+      onChange(newValue);
+    }
   }
 
   function handleDecrement() {
-    if (value > 1) {
-      setValue(value - 1);
+    if (inputValue > 1) {
+      const newValue = inputValue - 1;
+      setInputValue(newValue);
+      if (onChange) {
+        onChange(newValue);
+      }
     }
   }
 
@@ -24,7 +41,8 @@ export function InputNumber() {
       <input
         className="size-5 bg-transparent text-center font-roboto leading-line text-base-title outline-none"
         type="number"
-        value={value}
+        value={inputValue}
+        readOnly
       />
       <Plus
         className="cursor-pointer text-purple duration-300 hover:text-purple-dark"

@@ -2,8 +2,48 @@ import { CartAdd } from "./CartAdd";
 import { InputNumber } from "./InputNumber";
 import { coffeeData } from "../../pages/Home/components/coffee-list/utils/datacoffee";
 import { motion } from "framer-motion";
+import { useContext, useState } from "react";
+import { CartContext } from "@/contexts/CartContext";
+
+interface Coffee {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  img: string;
+  tags: string[];
+  quantity?: number;
+}
 
 export function CardHome() {
+  const { setCart } = useContext(CartContext);
+  const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
+
+  function handleAddToCart(coffee: Coffee) {
+    const quantity = quantities[coffee.id] || 1;
+    const cartItems: Coffee[] = JSON.parse(
+      localStorage.getItem("cartItems") || "[]",
+    );
+
+    const existingItemIndex = cartItems.findIndex(
+      (item) => item.id === coffee.id,
+    );
+    if (existingItemIndex !== -1) {
+      cartItems[existingItemIndex].quantity =
+        (cartItems[existingItemIndex].quantity || 1) + quantity;
+    } else {
+      coffee.quantity = quantity;
+      cartItems.push(coffee);
+    }
+
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    setCart(cartItems.reduce((acc, item) => acc + (item.quantity || 1), 0));
+  }
+
+  function handleQuantityChange(id: number, value: number) {
+    setQuantities((prev) => ({ ...prev, [id]: value }));
+  }
+
   return (
     <>
       {coffeeData.map((coffee) => (
@@ -55,8 +95,10 @@ export function CardHome() {
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <InputNumber />
-              <CartAdd />
+              <InputNumber
+                onChange={(value) => handleQuantityChange(coffee.id, value)}
+              />
+              <CartAdd onClick={() => handleAddToCart(coffee)} />
             </div>
           </div>
         </motion.div>
