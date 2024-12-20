@@ -6,6 +6,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ClipboardText, List, MapPin } from "phosphor-react";
+import { Link } from "react-router-dom";
 
 export function MenuMobile() {
   return (
@@ -28,9 +29,12 @@ export function MenuMobile() {
 
             <div className="flex cursor-pointer items-center gap-1 rounded-md bg-purple p-2 text-white">
               <ClipboardText className="size-[22px]" />
-              <span className="font-roboto text-sm leading-line">
+              <Link
+                to={"/history"}
+                className="font-roboto text-sm leading-line"
+              >
                 Meus Pedidos
-              </span>
+              </Link>
             </div>
           </SheetDescription>
         </SheetHeader>

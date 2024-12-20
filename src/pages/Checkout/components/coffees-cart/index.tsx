@@ -14,9 +14,25 @@ interface Coffee {
   quantity: number;
 }
 
+interface Purchase {
+  items: Coffee[];
+  address: AddressData;
+  paymentMethod: string;
+  date: string;
+}
+
+interface AddressData {
+  logradouro: string;
+  numero: string;
+  bairro: string;
+  localidade: string;
+  uf: string;
+}
+
 export function CoffeesCart() {
   const navigate = useNavigate();
-  const { isFormValid, paymentMethod, setCart } = useContext(CartContext);
+  const { isFormValid, paymentMethod, setCart, addressData } =
+    useContext(CartContext);
   const [cartItems, setCartItems] = useState<Coffee[]>([]);
   const [total, setTotal] = useState(0);
 
@@ -39,17 +55,18 @@ export function CoffeesCart() {
   const totalWithDelivery = total + deliveryFee;
 
   function handleCheckout() {
-    if (!paymentMethod) {
-      alert("Por favor, selecione um método de pagamento.");
-      return;
-    }
-
-    const purchaseHistory = JSON.parse(
+    const purchaseHistory: Purchase[] = JSON.parse(
       localStorage.getItem("purchaseHistory") || "[]",
     );
+    const newPurchase: Purchase = {
+      items: cartItems,
+      address: addressData,
+      paymentMethod: paymentMethod,
+      date: new Date().toISOString(),
+    };
     localStorage.setItem(
       "purchaseHistory",
-      JSON.stringify([...purchaseHistory, ...cartItems]),
+      JSON.stringify([...purchaseHistory, newPurchase]),
     );
     localStorage.removeItem("cartItems");
     setCartItems([]);

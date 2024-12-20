@@ -1,6 +1,6 @@
 import { ClipboardText, MapPin, Moon, Sun } from "phosphor-react";
 import { Cart } from "../ui/Cart";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { MenuMobile } from "./MenuMobile";
 import { useState, useEffect } from "react";
 
@@ -60,9 +60,9 @@ export function Header() {
 
           <div className="hidden cursor-pointer items-center gap-1 rounded-md bg-purple p-2 text-white sm:flex">
             <ClipboardText className="size-[22px]" />
-            <span className="font-roboto text-sm leading-line">
+            <Link to={"/history"} className="font-roboto text-sm leading-line">
               Meus Pedidos
-            </span>
+            </Link>
           </div>
           <Cart />
           <MenuMobile />
