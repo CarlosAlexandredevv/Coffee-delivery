@@ -5,7 +5,10 @@ import { motion } from "framer-motion";
 
 export function Checkout() {
   return (
-    <main className="mx-auto grid max-w-container gap-8 px-3 py-6 md:grid-cols-[1.3fr_1fr] xl:px-0">
+    <form
+      onSubmit={(e) => e.preventDefault()}
+      className="mx-auto grid max-w-container gap-8 px-3 py-6 md:grid-cols-[1.3fr_1fr] xl:px-0"
+    >
       <div>
         <motion.h1
           initial={{ x: -100, opacity: 0 }}
@@ -39,6 +42,6 @@ export function Checkout() {
           <CoffeesCart />
         </motion.div>
       </div>
-    </main>
+    </form>
   );
 }

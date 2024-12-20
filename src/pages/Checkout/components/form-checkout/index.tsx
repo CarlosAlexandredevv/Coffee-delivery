@@ -1,36 +1,67 @@
 import { InputForm } from "@/components/ui/InputForm";
 import { MapPinLine } from "phosphor-react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as zod from "zod";
+import { CartContext } from "../../../../contexts/CartContext";
+
+const formValidateSchema = zod.object({
+  cep: zod.string().length(9),
+  logradouro: zod.string().min(3),
+  numero: zod.string().min(1),
+  complemento: zod.string().optional(),
+  bairro: zod.string().min(3),
+  localidade: zod.string().min(3),
+  uf: zod.string().length(2),
+});
+
+type FormData = zod.infer<typeof formValidateSchema>;
 
 export function FormCheckout() {
-  const [address, setAddress] = useState({
-    cep: "",
-    logradouro: "",
-    complemento: "",
-    bairro: "",
-    localidade: "",
-    uf: "",
+  const { setIsFormValid } = useContext(CartContext);
+
+  const {
+    control,
+    formState: { errors, isValid },
+    watch,
+    setValue,
+  } = useForm<FormData>({
+    resolver: zodResolver(formValidateSchema),
+    mode: "onChange",
+    defaultValues: {
+      cep: "",
+      logradouro: "",
+      numero: "",
+      complemento: "",
+      bairro: "",
+      localidade: "",
+      uf: "",
+    },
   });
 
   useEffect(() => {
-    if (address.cep.length === 8) {
+    setIsFormValid(isValid);
+  }, [isValid, setIsFormValid]);
+
+  const cepValue = watch("cep");
+
+  useEffect(() => {
+    if (cepValue && cepValue.length === 8) {
       async function fetchAddress() {
         try {
           const response = await fetch(
-            `https://viacep.com.br/ws/${address.cep}/json/`,
+            `https://viacep.com.br/ws/${cepValue}/json/`,
           );
           const data = await response.json();
 
           if (!data.erro) {
-            setAddress((prevState) => ({
-              ...prevState,
-              logradouro: data.logradouro || "",
-              complemento: data.complemento || "",
-              bairro: data.bairro || "",
-              localidade: data.localidade || "",
-              uf: data.uf || "",
-            }));
+            for (const [key, value] of Object.entries(data)) {
+              if (key in data) {
+                setValue(key as keyof FormData, String(value) || "");
+              }
+            }
           }
         } catch (error) {
           console.error("Erro ao buscar o endereço:", error);
@@ -39,12 +70,7 @@ export function FormCheckout() {
 
       fetchAddress();
     }
-  }, [address.cep]);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setAddress((prevState) => ({ ...prevState, [name]: value }));
-  };
+  }, [cepValue, setValue]);
 
   return (
     <motion.div
@@ -69,60 +95,66 @@ export function FormCheckout() {
       <form className="mt-8">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:grid-rows-4">
           <div className="md:col-span-2">
-            <InputForm
+            <Controller
               name="cep"
-              onChange={handleInputChange}
-              placeholder="CEP"
-              value={address.cep}
+              control={control}
+              render={({ field }) => (
+                <InputForm placeholder="CEP" maxLength={8} {...field} />
+              )}
             />
           </div>
           <div className="md:col-span-6 md:row-start-2">
-            <InputForm
+            <Controller
               name="logradouro"
-              placeholder="Rua"
-              value={address.logradouro}
-              onChange={handleInputChange}
+              control={control}
+              render={({ field }) => <InputForm placeholder="Rua" {...field} />}
             />
           </div>
           <div className="md:col-span-2 md:row-start-3">
-            <InputForm
+            <Controller
               name="numero"
-              placeholder="Número"
-              onChange={handleInputChange}
+              control={control}
+              render={({ field }) => (
+                <InputForm placeholder="Número" {...field} />
+              )}
             />
           </div>
           <div className="md:col-span-4 md:col-start-3 md:row-start-3">
-            <InputForm
+            <Controller
               name="complemento"
-              placeholder="Complemento"
-              value={address.complemento}
-              onChange={handleInputChange}
-              opcional
+              control={control}
+              render={({ field }) => (
+                <InputForm placeholder="Complemento (opcional)" {...field} />
+              )}
             />
           </div>
           <div className="md:col-span-2 md:row-start-4">
-            <InputForm
+            <Controller
               name="bairro"
-              placeholder="Bairro"
-              value={address.bairro}
-              onChange={handleInputChange}
+              control={control}
+              render={({ field }) => (
+                <InputForm placeholder="Bairro" {...field} />
+              )}
             />
+            {errors.bairro && <p>{errors.bairro.message}</p>}
           </div>
           <div className="md:col-span-3 md:col-start-3 md:row-start-4">
-            <InputForm
+            <Controller
               name="localidade"
-              placeholder="Cidade"
-              value={address.localidade}
-              onChange={handleInputChange}
+              control={control}
+              render={({ field }) => (
+                <InputForm placeholder="Cidade" {...field} />
+              )}
             />
+            {errors.localidade && <p>{errors.localidade.message}</p>}
           </div>
           <div className="row-start-4 md:col-start-6">
-            <InputForm
+            <Controller
               name="uf"
-              placeholder="UF"
-              value={address.uf}
-              onChange={handleInputChange}
+              control={control}
+              render={({ field }) => <InputForm placeholder="UF" {...field} />}
             />
+            {errors.uf && <p>{errors.uf.message}</p>}
           </div>
         </div>
       </form>

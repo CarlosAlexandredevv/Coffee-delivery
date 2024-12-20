@@ -5,7 +5,7 @@ import { Toaster } from "sonner";
 export function App() {
   return (
     <CartContextProvider>
-      <Toaster />
+      <Toaster richColors />
       <BrowserRouter>
         <Router />
       </BrowserRouter>

@@ -1,6 +1,7 @@
 import { ButtonCart } from "@/components/ui/ButtonCart";
 import { CardCart } from "@/components/ui/CardCart";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { CartContext } from "../../../../contexts/CartContext";
 
 interface Coffee {
   id: number;
@@ -13,6 +14,7 @@ interface Coffee {
 }
 
 export function CoffeesCart() {
+  const { isFormValid } = useContext(CartContext);
   const [cartItems, setCartItems] = useState<Coffee[]>([]);
   const [total, setTotal] = useState(0);
 
@@ -62,7 +64,10 @@ export function CoffeesCart() {
             R$ {totalWithDelivery.toFixed(2)}
           </span>
         </div>
-        <ButtonCart disabled={cartItems.length === 0} />
+        <ButtonCart
+          type="submit"
+          disabled={cartItems.length === 0 || !isFormValid}
+        />
       </div>
     </div>
   );
