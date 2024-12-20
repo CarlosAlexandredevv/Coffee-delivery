@@ -14,7 +14,7 @@ interface Coffee {
 }
 
 export function CoffeesCart() {
-  const { isFormValid } = useContext(CartContext);
+  const { isFormValid, paymentMethod } = useContext(CartContext);
   const [cartItems, setCartItems] = useState<Coffee[]>([]);
   const [total, setTotal] = useState(0);
 
@@ -66,7 +66,7 @@ export function CoffeesCart() {
         </div>
         <ButtonCart
           type="submit"
-          disabled={cartItems.length === 0 || !isFormValid}
+          disabled={cartItems.length === 0 || !isFormValid || !paymentMethod}
         />
       </div>
     </div>

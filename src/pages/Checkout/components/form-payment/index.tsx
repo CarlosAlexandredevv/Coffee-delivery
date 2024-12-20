@@ -2,8 +2,16 @@ import { SelectCard } from "@/components/ui/SelectCard";
 import { CurrencyDollar } from "phosphor-react";
 import { CreditCard, Bank, Money } from "phosphor-react";
 import { motion } from "framer-motion";
+import { useContext } from "react";
+import { CartContext } from "../../../../contexts/CartContext";
 
 export function FormPayment() {
+  const { setPaymentMethod } = useContext(CartContext);
+
+  const handlePaymentMethodChange = (method: string) => {
+    setPaymentMethod(method);
+  };
+
   return (
     <motion.main
       initial={{ x: -100, opacity: 0 }}
@@ -28,16 +36,19 @@ export function FormPayment() {
           method="CARTÃO DE CRÉDITO"
           icon={<CreditCard className="text-purple" />}
           name="payment-method"
+          onClick={() => handlePaymentMethodChange("CARTÃO DE CRÉDITO")}
         />
         <SelectCard
           method="CARTÃO DE DÉBITO"
           icon={<Bank className="text-purple" />}
           name="payment-method"
+          onClick={() => handlePaymentMethodChange("CARTÃO DE DÉBITO")}
         />
         <SelectCard
           method="DINHEIRO"
           icon={<Money className="text-purple" />}
           name="payment-method"
+          onClick={() => handlePaymentMethodChange("DINHEIRO")}
         />
       </fieldset>
     </motion.main>

@@ -2,11 +2,12 @@ interface SelectCardProps {
   method: string;
   icon: JSX.Element;
   name: string;
+  onClick: () => void;
 }
 
-export function SelectCard({ method, icon, name }: SelectCardProps) {
+export function SelectCard({ method, icon, name, onClick }: SelectCardProps) {
   return (
-    <div>
+    <div onClick={onClick}>
       <input type="radio" id={method} name={name} className="peer hidden" />
       <label
         htmlFor={method}
