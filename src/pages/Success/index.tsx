@@ -81,7 +81,7 @@ export function Success() {
         transition={{ duration: 0.5 }}
         exit={{ x: -100, opacity: 0 }}
         className="place-self-center lg:place-self-end"
-        src="public/Illustration.svg"
+        src="Illustration.svg"
         alt=""
       />
     </div>
