@@ -1,5 +1,6 @@
 import { Calendar, Coffee, CurrencyDollar, MapPin } from "phosphor-react";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 interface Coffee {
   id: number;
@@ -48,18 +49,36 @@ export function History() {
   return (
     <main className="mx-auto max-w-container px-3 py-8">
       <div>
-        <h1 className="text-center text-[32px] font-extrabold leading-line text-yellow-dark sm:self-center lg:self-start">
+        <motion.h1
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          exit={{ x: -100, opacity: 0 }}
+          className="text-center text-[32px] font-extrabold leading-line text-yellow-dark sm:self-center lg:self-start"
+        >
           Histórico de Pedidos
-        </h1>
+        </motion.h1>
         {purchaseHistory.length === 0 ? (
-          <div className="my-6 flex flex-col items-center justify-center">
+          <motion.div
+            className="my-6 flex flex-col items-center justify-center"
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            exit={{ x: -100, opacity: 0 }}
+          >
             <Coffee size={64} className="text-zinc-500" />
             <p className="font-roboto font-semibold text-zinc-500">
               Nenhum pedido realizado
             </p>
-          </div>
+          </motion.div>
         ) : (
-          <div className="mt-6 grid grid-flow-row-dense auto-rows-min gap-6 self-center md:grid-cols-2">
+          <motion.div
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            exit={{ x: -100, opacity: 0 }}
+            className="mt-6 grid grid-flow-row-dense auto-rows-min gap-6 self-center md:grid-cols-2"
+          >
             {purchaseHistory.map((purchase, index) => (
               <div
                 className="rounded-[6px_36px] border border-purple"
@@ -105,7 +124,7 @@ export function History() {
                 </div>
               </div>
             ))}
-          </div>
+          </motion.div>
         )}
       </div>
     </main>
