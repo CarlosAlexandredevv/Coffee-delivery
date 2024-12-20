@@ -1,6 +1,8 @@
 import { Coffee } from "phosphor-react";
 import { BinIcon } from "./BinIcon";
 import { InputNumber } from "./InputNumber";
+import { useContext } from "react";
+import { CartContext } from "@/contexts/CartContext";
 
 interface Coffee {
   id: number;
@@ -18,12 +20,20 @@ interface CardCartProps {
 }
 
 export function CardCart({ cartItems, setCartItems }: CardCartProps) {
+  const { cart, setCart } = useContext(CartContext);
   function handleQuantityChange(id: number, value: number) {
     const updatedCartItems = cartItems.map((item) =>
       item.id === id ? { ...item, quantity: value } : item,
     );
     setCartItems(updatedCartItems);
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+  }
+
+  function handleRemoveItem(id: number) {
+    const updatedCartItems = cartItems.filter((item) => item.id !== id);
+    setCartItems(updatedCartItems);
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+    setCart(cart - 1);
   }
 
   return (
@@ -49,13 +59,12 @@ export function CardCart({ cartItems, setCartItems }: CardCartProps) {
                   R$ {coffee.price.toFixed(2)}
                 </span>
               </div>
-
               <div className="mt-2 flex gap-2">
                 <InputNumber
                   onChange={(value) => handleQuantityChange(coffee.id, value)}
                   value={coffee.quantity}
                 />
-                <BinIcon />
+                <BinIcon onClick={() => handleRemoveItem(coffee.id)} />
               </div>
             </div>
           </div>
