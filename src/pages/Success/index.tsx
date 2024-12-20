@@ -1,9 +1,15 @@
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
-
+import { motion } from "framer-motion";
 export function Success() {
   return (
     <div className="mx-auto mt-12 flex max-w-container flex-col justify-between px-3 lg:flex-row xl:px-0">
-      <div className="flex flex-col gap-10">
+      <motion.div
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        exit={{ x: -100, opacity: 0 }}
+        className="flex flex-col gap-10"
+      >
         <div className="flex flex-col gap-1">
           <h2 className="text-[32px] font-extrabold leading-line text-yellow-dark">
             Uhu! Pedido confirmado
@@ -57,8 +63,12 @@ export function Success() {
             </div>
           </div>
         </div>
-      </div>
-      <img
+      </motion.div>
+      <motion.img
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        exit={{ x: -100, opacity: 0 }}
         className="mb-[-13px] place-self-center lg:place-self-end"
         src="public/Illustration.svg"
         alt=""
