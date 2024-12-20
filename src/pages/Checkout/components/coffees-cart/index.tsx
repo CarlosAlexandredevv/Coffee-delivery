@@ -2,6 +2,7 @@ import { ButtonCart } from "@/components/ui/ButtonCart";
 import { CardCart } from "@/components/ui/CardCart";
 import { useState, useEffect, useContext } from "react";
 import { CartContext } from "../../../../contexts/CartContext";
+import { useNavigate } from "react-router-dom";
 
 interface Coffee {
   id: number;
@@ -14,7 +15,8 @@ interface Coffee {
 }
 
 export function CoffeesCart() {
-  const { isFormValid, paymentMethod } = useContext(CartContext);
+  const navigate = useNavigate();
+  const { isFormValid, paymentMethod, setCart } = useContext(CartContext);
   const [cartItems, setCartItems] = useState<Coffee[]>([]);
   const [total, setTotal] = useState(0);
 
@@ -35,6 +37,25 @@ export function CoffeesCart() {
 
   const deliveryFee = 3.5;
   const totalWithDelivery = total + deliveryFee;
+
+  function handleCheckout() {
+    if (!paymentMethod) {
+      alert("Por favor, selecione um método de pagamento.");
+      return;
+    }
+
+    const purchaseHistory = JSON.parse(
+      localStorage.getItem("purchaseHistory") || "[]",
+    );
+    localStorage.setItem(
+      "purchaseHistory",
+      JSON.stringify([...purchaseHistory, ...cartItems]),
+    );
+    localStorage.removeItem("cartItems");
+    setCartItems([]);
+    navigate("/success");
+    setCart(0);
+  }
 
   return (
     <div>
@@ -65,7 +86,8 @@ export function CoffeesCart() {
           </span>
         </div>
         <ButtonCart
-          type="submit"
+          type="button"
+          onClick={handleCheckout}
           disabled={cartItems.length === 0 || !isFormValid || !paymentMethod}
         />
       </div>

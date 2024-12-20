@@ -12,7 +12,7 @@ const formValidateSchema = zod.object({
   logradouro: zod.string().min(3),
   numero: zod.string().min(1),
   complemento: zod.string().optional(),
-  bairro: zod.string().min(3),
+  bairro: zod.string().min(2),
   localidade: zod.string().min(3),
   uf: zod.string().length(2),
 });
@@ -20,13 +20,14 @@ const formValidateSchema = zod.object({
 type FormData = zod.infer<typeof formValidateSchema>;
 
 export function FormCheckout() {
-  const { setIsFormValid } = useContext(CartContext);
+  const { setIsFormValid, setAddressData } = useContext(CartContext);
 
   const {
     control,
-    formState: { errors, isValid },
+    formState: { isValid },
     watch,
     setValue,
+    getValues,
   } = useForm<FormData>({
     resolver: zodResolver(formValidateSchema),
     mode: "onChange",
@@ -44,6 +45,13 @@ export function FormCheckout() {
   useEffect(() => {
     setIsFormValid(isValid);
   }, [isValid, setIsFormValid]);
+
+  useEffect(() => {
+    const subscription = watch(() => {
+      setAddressData(getValues());
+    });
+    return () => subscription.unsubscribe();
+  }, [watch, setAddressData, getValues, setAddressData]);
 
   const cepValue = watch("cep");
 
@@ -136,7 +144,6 @@ export function FormCheckout() {
                 <InputForm placeholder="Bairro" {...field} />
               )}
             />
-            {errors.bairro && <p>{errors.bairro.message}</p>}
           </div>
           <div className="md:col-span-3 md:col-start-3 md:row-start-4">
             <Controller
@@ -146,7 +153,6 @@ export function FormCheckout() {
                 <InputForm placeholder="Cidade" {...field} />
               )}
             />
-            {errors.localidade && <p>{errors.localidade.message}</p>}
           </div>
           <div className="row-start-4 md:col-start-6">
             <Controller
@@ -154,7 +160,6 @@ export function FormCheckout() {
               control={control}
               render={({ field }) => <InputForm placeholder="UF" {...field} />}
             />
-            {errors.uf && <p>{errors.uf.message}</p>}
           </div>
         </div>
       </form>

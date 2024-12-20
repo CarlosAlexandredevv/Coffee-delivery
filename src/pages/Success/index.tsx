@@ -1,6 +1,17 @@
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
 import { motion } from "framer-motion";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
+
 export function Success() {
+  const { addressData, paymentMethod } = useContext(CartContext);
+
+  const paymentMethodFormatted = {
+    "CARTÃO DE CRÉDITO": "Cartão de Crédito",
+    "CARTÃO DE DÉBITO": "Cartão de Débito",
+    DINHEIRO: "Dinheiro",
+  }[paymentMethod];
+
   return (
     <div className="mx-auto mt-12 flex max-w-container flex-col justify-between px-3 lg:flex-row xl:px-0">
       <motion.div
@@ -14,7 +25,7 @@ export function Success() {
           <h2 className="text-center text-[32px] font-extrabold leading-line text-yellow-dark sm:self-center lg:self-start">
             Uhu! Pedido confirmado
           </h2>
-          <span className="text-[20p x] text-center leading-line text-base-subtitle dark:text-zinc-200 sm:self-center lg:self-start">
+          <span className="text-center text-[20px] leading-line text-base-subtitle dark:text-zinc-200 sm:self-center lg:self-start">
             Agora é só aguardar que logo o café chegará até você
           </span>
         </div>
@@ -28,13 +39,13 @@ export function Success() {
                 <p className="max-w-96 font-roboto leading-line text-base-text dark:text-zinc-200">
                   Entrega em{" "}
                   <span className="font-bold leading-line dark:text-zinc-50">
-                    Rua João Daniel Martinelli, 102
+                    Rua {addressData.logradouro}, {addressData.numero}
                   </span>{" "}
-                  Farrapos - Porto Alegre, RS
+                  {addressData.bairro} - {addressData.localidade},{" "}
+                  {addressData.uf}
                 </p>
               </div>
             </div>
-
             <div className="flex items-center gap-3">
               <div className="flex h-8 w-8 items-center justify-center gap-1 rounded-full bg-yellow p-2">
                 <Timer className="text-white" weight="fill" />
@@ -57,7 +68,7 @@ export function Success() {
                   Pagamento na entrega
                 </p>
                 <span className="font-roboto font-bold leading-line dark:text-zinc-50">
-                  Cartão de Crédito
+                  {paymentMethodFormatted}
                 </span>
               </div>
             </div>
