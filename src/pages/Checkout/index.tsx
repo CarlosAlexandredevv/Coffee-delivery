@@ -7,7 +7,7 @@ export function Checkout() {
   return (
     <form
       onSubmit={(e) => e.preventDefault()}
-      className="mx-auto grid max-w-container gap-8 px-3 py-6 md:grid-cols-[1.3fr_1fr] xl:px-0"
+      className="mx-auto grid min-h-screen max-w-container gap-8 px-3 py-6 md:grid-cols-[1.3fr_1fr] xl:px-0"
     >
       <div>
         <motion.h1
