@@ -11,14 +11,14 @@ export function Success() {
         className="flex flex-col gap-10"
       >
         <div className="flex flex-col gap-1">
-          <h2 className="text-[32px] font-extrabold leading-line text-yellow-dark sm:self-center lg:self-start">
+          <h2 className="text-center text-[32px] font-extrabold leading-line text-yellow-dark sm:self-center lg:self-start">
             Uhu! Pedido confirmado
           </h2>
-          <span className="text-[20p x] leading-line text-base-subtitle dark:text-zinc-200 sm:self-center lg:self-start">
+          <span className="text-[20p x] text-center leading-line text-base-subtitle dark:text-zinc-200 sm:self-center lg:self-start">
             Agora é só aguardar que logo o café chegará até você
           </span>
         </div>
-        <div className="max-w-[450px] self-center rounded-[6px_36px] border border-transparent bg-gradient-to-br from-yellow to-purple bg-origin-border">
+        <div className="max-w-[450px] self-center rounded-[6px_36px] border border-transparent bg-gradient-to-br from-yellow to-purple bg-origin-border sm:min-w-[450px]">
           <div className="flex flex-col gap-8 rounded-[6px_36px] bg-white p-10 dark:bg-zinc-800">
             <div className="flex items-center gap-3">
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-purple p-2">
