@@ -11,10 +11,10 @@ export function Success() {
         className="flex flex-col gap-10"
       >
         <div className="flex flex-col gap-1">
-          <h2 className="text-[32px] font-extrabold leading-line text-yellow-dark">
+          <h2 className="text-[32px] font-extrabold leading-line text-yellow-dark sm:self-center lg:self-start">
             Uhu! Pedido confirmado
           </h2>
-          <span className="text-[20p x] leading-line text-base-subtitle dark:text-zinc-200">
+          <span className="text-[20p x] leading-line text-base-subtitle dark:text-zinc-200 sm:self-center lg:self-start">
             Agora é só aguardar que logo o café chegará até você
           </span>
         </div>
@@ -69,7 +69,7 @@ export function Success() {
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
         exit={{ x: -100, opacity: 0 }}
-        className="mb-[-13px] place-self-center lg:place-self-end"
+        className="place-self-center lg:place-self-end"
         src="public/Illustration.svg"
         alt=""
       />
