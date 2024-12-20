@@ -1,7 +1,6 @@
 import { ButtonCart } from "@/components/ui/ButtonCart";
 import { CardCart } from "@/components/ui/CardCart";
-import { CartContext } from "@/contexts/CartContext";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 
 interface Coffee {
   id: number;
@@ -12,28 +11,32 @@ interface Coffee {
   tags: string[];
   quantity: number;
 }
-export function CoffeesCart() {
-  const { cart } = useContext(CartContext);
 
+export function CoffeesCart() {
+  const [cartItems, setCartItems] = useState<Coffee[]>([]);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
     const items: Coffee[] = JSON.parse(
       localStorage.getItem("cartItems") || "[]",
     );
-    const totalPrice = items.reduce(
+    setCartItems(items);
+  }, []);
+
+  useEffect(() => {
+    const totalPrice = cartItems.reduce(
       (acc, item) => acc + item.price * item.quantity,
       0,
     );
     setTotal(totalPrice);
-  }, []);
+  }, [cartItems]);
 
   const deliveryFee = 3.5;
   const totalWithDelivery = total + deliveryFee;
 
   return (
     <div>
-      <CardCart />
+      <CardCart cartItems={cartItems} setCartItems={setCartItems} />
       <div className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
           <span className="font-roboto text-sm leading-line text-base-text dark:text-zinc-100">
@@ -59,7 +62,7 @@ export function CoffeesCart() {
             R$ {totalWithDelivery.toFixed(2)}
           </span>
         </div>
-        <ButtonCart disabled={!cart} />
+        <ButtonCart disabled={cartItems.length === 0} />
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import { Coffee } from "phosphor-react";
 import { BinIcon } from "./BinIcon";
 import { InputNumber } from "./InputNumber";
-import { useState, useEffect } from "react";
 
 interface Coffee {
   id: number;
@@ -13,14 +12,12 @@ interface Coffee {
   quantity: number;
 }
 
-export function CardCart() {
-  const [cartItems, setCartItems] = useState<Coffee[]>([]);
+interface CardCartProps {
+  cartItems: Coffee[];
+  setCartItems: React.Dispatch<React.SetStateAction<Coffee[]>>;
+}
 
-  useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("cartItems") || "[]");
-    setCartItems(items);
-  }, []);
-
+export function CardCart({ cartItems, setCartItems }: CardCartProps) {
   function handleQuantityChange(id: number, value: number) {
     const updatedCartItems = cartItems.map((item) =>
       item.id === id ? { ...item, quantity: value } : item,
